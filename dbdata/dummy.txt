@@ -1,0 +1,1 @@
+this file exists only to make sure that the folder is being tracked by git. It must exist when the docker container runs first time. 
