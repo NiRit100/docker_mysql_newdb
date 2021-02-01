@@ -1,0 +1,20 @@
+version: '3'
+ 
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      - "MYSQL_ROOT_PASSWORD=geheim"
+      - "MYSQL_DATABASE=psvdb"
+    ports:
+      - "23306:3306"
+    volumes:
+      - ./dockerdata/entrypoint/:/docker-entrypoint-initdb.d/
+      - ./dockerdata/config.cnf:/etc/mysql/conf.d/config.cnf
+      - ./startup.sh:/startup.sh
+      - ./dbdata/:/var/lib/mysql/
+    entrypoint: "/bin/bash"
+    command: "/startup.sh"
+volumes:
+  dbdata: 
